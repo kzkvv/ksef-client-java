@@ -46,7 +46,7 @@ val googleZxing = "3.5.3"
 
 dependencies {
     implementation(project(":ksef-client"))
-
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:$jakartaVersion")
     // Validation
     implementation("jakarta.validation:jakarta.validation-api:$jakartaValidationApiVersion")

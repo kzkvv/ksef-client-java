@@ -98,14 +98,14 @@ public class AuthController {
     @GetMapping(value = "prepare-sample-cert-auth-request")
     public CertAuthRequest prepareSampleCertAuthRequest() throws CertificateEncodingException {
         CertificateBuilders.X500NameHolder x500 = new CertificateBuilders()
-                .buildForOrganization("Kowalski sp. z o.o", "VATPL-1111111111", "Kowalski", "PL");
+                .buildForOrganization("Kowalski sp. z o.o", "VATPL-1111116578", "Kowalski", "PL");
         SelfSignedCertificate selfSignedCertificate = certificateService.generateSelfSignedCertificateRsa(x500);
         String privateKeyBase64 = Base64.getEncoder().encodeToString(selfSignedCertificate.getPrivateKey().getEncoded());
         String certInBase64 = Base64.getEncoder().encodeToString(selfSignedCertificate.certificate().getEncoded());
         CertAuthRequest certAuthRequest = new CertAuthRequest();
         certAuthRequest.certInBase64 = certInBase64;
         certAuthRequest.privateKeyBase64 = privateKeyBase64;
-        certAuthRequest.contextIdentifier = "1111111111";
+        certAuthRequest.contextIdentifier = "1111116578";
         return certAuthRequest;
     }
 

@@ -1,2 +1,12 @@
 server:
-  port: 8082
+  port: 8077
+
+springdoc:
+  api-docs:
+    # Optional: customize location of JSON/YAML spec
+    path: /api-docs           # default is /v3/api-docs
+  swagger-ui:
+    # Optional: customize UI path
+    path: /swagger-ui.html    # default is /swagger-ui/index.html
+    operationsSorter: method  # sort operations by HTTP method
+    tagsSorter: alpha         # sort tags alphabetically

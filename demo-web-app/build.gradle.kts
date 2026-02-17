@@ -48,6 +48,9 @@ dependencies {
     implementation(project(":ksef-client"))
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:$jakartaVersion")
+    implementation("org.springframework.retry:spring-retry")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+
     // Validation
     implementation("jakarta.validation:jakarta.validation-api:$jakartaValidationApiVersion")
     implementation("jakarta.annotation:jakarta.annotation-api:$jakartaAnnotationApiVersion")

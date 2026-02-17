@@ -10,7 +10,7 @@ public class ExampleApiProperties extends KsefApiProperties {
 
     @Override
     public String getBaseUri() {
-        return "https://ksef-test.mf.gov.pl/";
+        return "https://api-test.ksef.mf.gov.pl";
     }
 
     @Override

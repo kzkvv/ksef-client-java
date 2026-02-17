@@ -2,10 +2,7 @@ package pl.akmf.ksef.sdk.api;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.akmf.ksef.sdk.api.builders.session.OpenOnlineSessionRequestBuilder;
 import pl.akmf.ksef.sdk.api.builders.session.SendInvoiceOnlineSessionRequestBuilder;
 import pl.akmf.ksef.sdk.api.services.DefaultCryptographyService;
@@ -62,15 +59,17 @@ public class OnlineSessionController {
      * @return OpenOnlineSessionResponse
      * @throws ApiException if fails to make API call
      */
-    @PostMapping(value = "/send-invoice/{referenceNumber}/{contextIdentifier}")
+    @PostMapping(value = "/send-invoice/{referenceNumber}")
     public SendInvoiceResponse sendInvoiceOnlineSessionAsync(@PathVariable String referenceNumber,
-                                                             @PathVariable String contextIdentifier,
+                                                             @RequestParam String sellerNip,
+                                                             @RequestParam String buyerNip,
                                                              @RequestHeader(name = AUTHORIZATION) String authToken) throws ApiException, IOException {
         //read example invoice
         String invoicePath = "demo-web-app/src/main/resources/xml/invoices/sample/invoice-template.xml";
         String invoiceTemplate = Files.readString(Paths.get(invoicePath), StandardCharsets.UTF_8)
-                .replace("#nip#", contextIdentifier)
-                .replace("#invoicing_date#", LocalDate.of(2025, 6, 15).format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+                .replace("#seller_nip#", sellerNip)
+                .replace("#buyer_nip#", buyerNip)
+                .replace("#invoicing_date#", LocalDate.of(2026, 01, 20).format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd")))
                 .replace("#invoice_number#", UUID.randomUUID().toString());
         var invoice = invoiceTemplate.getBytes(StandardCharsets.UTF_8);
 

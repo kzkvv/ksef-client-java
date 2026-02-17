@@ -3,16 +3,12 @@ package pl.akmf.ksef.sdk.api;
 import jakarta.xml.bind.JAXBException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.akmf.ksef.sdk.api.builders.auth.AuthTokenRequestBuilder;
 import pl.akmf.ksef.sdk.api.builders.auth.AuthTokenRequestSerializer;
 import pl.akmf.ksef.sdk.api.builders.certificate.CertificateBuilders;
@@ -50,6 +46,7 @@ import static pl.akmf.ksef.sdk.client.Headers.AUTHORIZATION;
 @RequiredArgsConstructor
 public class AuthController {
     private final DefaultKsefClient ksefClient;
+    private final RetryableContainer retryableContainer;
     private final SignatureService signatureService;
     private final CertificateService certificateService;
 
@@ -89,7 +86,7 @@ public class AuthController {
         SignatureResponse submitAuthTokenResponse = ksefClient.submitAuthTokenRequest(signedXml, false);
 
         //Czekanie na zakończenie procesu
-        isAuthStatusReady(submitAuthTokenResponse.getReferenceNumber(), submitAuthTokenResponse.getAuthenticationToken().getToken());
+        retryableContainer.isAuthStatusReady(submitAuthTokenResponse.getReferenceNumber(), submitAuthTokenResponse.getAuthenticationToken().getToken());
 
         //pobranie tokenów
         return ksefClient.redeemToken(submitAuthTokenResponse.getAuthenticationToken().getToken());
@@ -98,17 +95,25 @@ public class AuthController {
     @GetMapping(value = "prepare-sample-cert-auth-request")
     public CertAuthRequest prepareSampleCertAuthRequest() throws CertificateEncodingException {
         CertificateBuilders.X500NameHolder x500 = new CertificateBuilders()
-                .buildForOrganization("Kowalski sp. z o.o", "VATPL-1111116578", "Kowalski", "PL");
+                .buildForOrganization("Kowalski sp. z o.o", "VATPL-1133041576", "Kowalski", "PL");
         SelfSignedCertificate selfSignedCertificate = certificateService.generateSelfSignedCertificateRsa(x500);
         String privateKeyBase64 = Base64.getEncoder().encodeToString(selfSignedCertificate.getPrivateKey().getEncoded());
         String certInBase64 = Base64.getEncoder().encodeToString(selfSignedCertificate.certificate().getEncoded());
         CertAuthRequest certAuthRequest = new CertAuthRequest();
         certAuthRequest.certInBase64 = certInBase64;
         certAuthRequest.privateKeyBase64 = privateKeyBase64;
-        certAuthRequest.contextIdentifier = "1111116578";
+        certAuthRequest.contextIdentifier = "1133041576";
         return certAuthRequest;
     }
 
+    @Retryable(
+            retryFor = {
+                    StatusWaitingException.class,
+            }, maxAttempts = 100,
+            recover = "recoverAuthReadyStatusCheck",
+            backoff = @Backoff(delay = 30)
+
+    )
     @PostMapping(value = "auth-with-ksef-certificate")
     public AuthOperationStatusResponse authWithKsefCert(@RequestBody CertAuthRequest request) throws CertificateException, NoSuchAlgorithmException, InvalidKeySpecException, ApiException, JAXBException, IOException {
         // 1. Wczytaj certyfikat X.509
@@ -141,7 +146,7 @@ public class AuthController {
         var submitAuthTokenResponse = ksefClient.submitAuthTokenRequest(signedXml, false);
 
         //Czekanie na zakończenie procesu
-        isAuthStatusReady(submitAuthTokenResponse.getReferenceNumber(), submitAuthTokenResponse.getAuthenticationToken().getToken());
+        retryableContainer.isAuthStatusReady(submitAuthTokenResponse.getReferenceNumber(), submitAuthTokenResponse.getAuthenticationToken().getToken());
 
         //pobranie tokenów
         return ksefClient.redeemToken(submitAuthTokenResponse.getAuthenticationToken().getToken());
@@ -172,32 +177,7 @@ public class AuthController {
 
     }
 
-    @Retryable(
-            retryFor = {
-                    StatusWaitingException.class,
-            }, maxAttempts = 1,
-            recover = "recoverAuthReadyStatusCheck",
-            backoff = @Backoff(delay = 30)
 
-    )
-    private void isAuthStatusReady(String referenceNumber, String tempToken) throws ApiException {
-
-        AuthStatus authStatus = ksefClient.getAuthStatus(referenceNumber, tempToken);
-
-        if (authStatus.getStatus().getCode() != 200) {
-            throw new StatusWaitingException("Authentication process has not been finished yet");
-        }
-    }
-
-    @Recover
-    public void recoverAuthReadyStatusCheck(String referenceNumber, String tempToken) throws ApiException {
-        AuthStatus authStatus = ksefClient.getAuthStatus(referenceNumber, tempToken);
-
-        if (authStatus.getStatus().getCode() != 200) {
-            log.error("Timeout for authentication process");
-            throw new StatusWaitingException("Authentication process has not been fineshed yet");
-        }
-    }
 }
 
 @Getter

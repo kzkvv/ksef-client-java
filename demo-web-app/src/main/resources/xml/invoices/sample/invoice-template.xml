@@ -8,7 +8,7 @@
 	</Naglowek>
 	<Podmiot1>
 		<DaneIdentyfikacyjne>
-			<NIP>#nip#</NIP>
+			<NIP>#seller_nip#</NIP>
 			<Nazwa>Twardowski, Januszewski and Żyła</Nazwa>
 		</DaneIdentyfikacyjne>
 		<Adres>
@@ -23,7 +23,7 @@
 	</Podmiot1>
 	<Podmiot2>
 		<DaneIdentyfikacyjne>
-			<NIP>6888785549</NIP>
+			<NIP>#buyer_nip#</NIP>
 			<Nazwa>Adamus and Sons</Nazwa>
 		</DaneIdentyfikacyjne>
 		<Adres>

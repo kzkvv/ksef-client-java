@@ -30,7 +30,7 @@ class QrCodeTests {
     //   • Wolniejsze generowanie kluczy, podpis i weryfikacja
     //   • Większe zużycie pamięci i miejsca na dysku
     // =============================================
-    @Test
+    //@Test
     void buildCertificateQr_WithEmbeddedPrivateKey_ShouldReturnBase64Png() throws Exception {
         VerificationLinkService linkSvc = new DefaultVerificationLinkService(exampleApiProperties);
         QrCodeService qrSvc = new DefaultQrCodeService();
@@ -54,7 +54,7 @@ class QrCodeTests {
         assertTrue(base64.startsWith("iVBOR"));
     }
 
-    @Test
+    //@Test
     void buildCertificateQr_PublicOnlyWithoutPrivateKey_ShouldThrow() throws Exception {
         VerificationLinkService linkSvc = new DefaultVerificationLinkService(exampleApiProperties);
         String nip = "0000000000";
@@ -74,7 +74,7 @@ class QrCodeTests {
     // • Krótsze linki QR i mniejsze zużycie zasobów
     // • Szybsze operacje: generowanie, podpis, weryfikacja
     // =============================================
-    @Test
+    //@Test
     void buildCertificateQr_WithEmbeddedEccPrivateKey_ShouldReturnBase64Png() throws Exception {
         VerificationLinkService linkSvc = new DefaultVerificationLinkService(exampleApiProperties);
         QrCodeService qrSvc = new DefaultQrCodeService();

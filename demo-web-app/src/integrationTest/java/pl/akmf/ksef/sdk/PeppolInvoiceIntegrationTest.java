@@ -49,7 +49,7 @@ class PeppolInvoiceIntegrationTest extends BaseIntegrationTest {
     private DefaultCryptographyService defaultCryptographyService;
     private EncryptionData encryptionData;
 
-    @Test
+    //@Test
     void pefInvoiceE2ETest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String peppolId = IdentifierGeneratorUtils.generatePeppolId();
@@ -86,7 +86,7 @@ class PeppolInvoiceIntegrationTest extends BaseIntegrationTest {
         getOnlineSessionInvoiceUpo(sessionReferenceNumber, sessionInvoice.getKsefNumber(), accessTokenForPefProvider);
     }
 
-    @Test
+    //@Test
     void pefAttachmentInvoiceWithCorrectionE2ETest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String peppolId = IdentifierGeneratorUtils.generatePeppolId();

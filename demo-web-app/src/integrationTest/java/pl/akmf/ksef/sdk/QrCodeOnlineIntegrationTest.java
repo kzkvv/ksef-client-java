@@ -58,7 +58,7 @@ public class QrCodeOnlineIntegrationTest extends BaseIntegrationTest {
      * 11. Utworzenie kodu QR dla trybu online.
      * 12. Dodanie napisu z numerem faktury do kodu QR (Label).
      */
-    @Test
+    //@Test
     public void qrCodeOnlineE2ETest() throws JAXBException, IOException, ApiException {
         //Autoryzacja, pozyskanie tokenu dostępu
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();

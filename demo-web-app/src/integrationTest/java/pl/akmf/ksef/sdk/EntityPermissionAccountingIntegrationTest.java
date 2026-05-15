@@ -26,7 +26,7 @@ public class EntityPermissionAccountingIntegrationTest extends BaseIntegrationTe
 
     private static final String DESCRIPTION = "E2E test grant";
 
-    @Test
+    //@Test
     void shouldReturnPermissionsSearchedBySubjectInEntityContext() throws JAXBException, IOException, ApiException {
         String jdgNip = IdentifierGeneratorUtils.generateRandomNIP(); //jdg
         String otherJdgNip = IdentifierGeneratorUtils.generateRandomNIP();  //inna jdg

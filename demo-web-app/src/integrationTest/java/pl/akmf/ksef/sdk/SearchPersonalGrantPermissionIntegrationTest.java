@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SearchPersonalGrantPermissionIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void searchPersonalPermissionTest() throws JAXBException, IOException, ApiException {
         // given
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();

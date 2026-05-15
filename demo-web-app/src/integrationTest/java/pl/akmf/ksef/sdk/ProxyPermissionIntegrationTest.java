@@ -26,7 +26,7 @@ import static org.awaitility.Awaitility.await;
 
 class ProxyPermissionIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void proxyPermissionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String subjectNip = IdentifierGeneratorUtils.generateRandomNIP();

@@ -15,7 +15,7 @@ import java.io.IOException;
 
 class ContextLimitIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void contextLimitE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

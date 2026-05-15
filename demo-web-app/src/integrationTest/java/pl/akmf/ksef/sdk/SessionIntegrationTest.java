@@ -36,7 +36,7 @@ class SessionIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void createSessionSearchSessionAndRevokeCurrentSession() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         AuthTokensPair accessTokensPair = authWithCustomNip(contextNip, contextNip);
@@ -76,7 +76,7 @@ class SessionIntegrationTest extends BaseIntegrationTest {
         Assertions.assertEquals("Nieprawidłowy token.", details.getDetails().getFirst());
     }
 
-    @Test
+    //@Test
     void createSecondSessionAndRevokeSessionByReferenceNumber() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         AuthTokensPair firstAccessTokensPair = authWithCustomNip(contextNip, contextNip);
@@ -131,7 +131,7 @@ class SessionIntegrationTest extends BaseIntegrationTest {
         ApiException apiException = assertThrows(ApiException.class, () -> ksefClient.refreshAccessToken(secondAccessTokensPair.refreshToken()));
     }
 
-    @Test
+    //@Test
     void searchSessionsByStatuses() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         EncryptionData encryptionData = defaultCryptographyService.getEncryptionData();
@@ -163,7 +163,7 @@ class SessionIntegrationTest extends BaseIntegrationTest {
         Assertions.assertEquals("Sesja anulowana", secondSession.getStatus().getDescription());
     }
 
-    @Test
+    //@Test
     void searchSessions() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

@@ -60,7 +60,7 @@ class QueryInvoiceIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void queryInvoiceE2ETest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

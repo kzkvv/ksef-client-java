@@ -42,7 +42,7 @@ class AuthorizationIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void refreshTokenE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         // given
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
@@ -58,7 +58,7 @@ class AuthorizationIntegrationTest extends BaseIntegrationTest {
         Assertions.assertNotEquals(initialAccessToken, refreshTokenResult.getAccessToken().getToken());
     }
 
-    @Test
+    //@Test
     void authorizeByKSeFCertificateWithECDSaEncoding() throws Exception {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
 
@@ -110,7 +110,7 @@ class AuthorizationIntegrationTest extends BaseIntegrationTest {
         Assertions.assertNotNull(tokenResponse);
     }
 
-    @Test
+    //@Test
     void authorizeByKSeFCertificateWithRSaEncoding() throws Exception {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
 

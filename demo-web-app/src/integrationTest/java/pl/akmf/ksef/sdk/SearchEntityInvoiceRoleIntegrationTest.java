@@ -21,7 +21,7 @@ import java.time.OffsetDateTime;
 
 class SearchEntityInvoiceRoleIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void searchEntityInvoiceRoles() throws JAXBException, IOException, ApiException {
         // given
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();

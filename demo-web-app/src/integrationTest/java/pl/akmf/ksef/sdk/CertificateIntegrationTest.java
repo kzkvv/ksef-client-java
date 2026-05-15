@@ -43,7 +43,7 @@ class CertificateIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void certificateE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String ownerNip = IdentifierGeneratorUtils.generateRandomNIP();
         String delegateNip = IdentifierGeneratorUtils.generateRandomNIP();

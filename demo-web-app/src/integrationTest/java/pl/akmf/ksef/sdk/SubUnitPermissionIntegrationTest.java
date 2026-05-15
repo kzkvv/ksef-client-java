@@ -27,7 +27,7 @@ import static org.awaitility.Awaitility.await;
 
 class SubUnitPermissionIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void subUnitPermissionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

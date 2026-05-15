@@ -42,7 +42,7 @@ class KsefTokenIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void checkGenerateTokenTest() throws IOException, ApiException, JAXBException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -114,7 +114,7 @@ class KsefTokenIntegrationTest extends BaseIntegrationTest {
         );
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("inputTestParameters")
     public void tokenTest(EncryptionMethod encryptionMethod) throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();

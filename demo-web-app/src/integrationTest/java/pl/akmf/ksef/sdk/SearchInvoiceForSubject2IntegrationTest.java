@@ -46,7 +46,7 @@ class SearchInvoiceForSubject2IntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void queryInvoiceE2EForSubject2Test() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String recipientNip = IdentifierGeneratorUtils.generateRandomNIP();

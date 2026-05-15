@@ -124,7 +124,9 @@ public class AuthController {
         // 2. Wczytaj klucz prywatny (RSA)
         byte[] privateKeyBytes = Base64.getDecoder().decode(request.getPrivateKeyBase64());
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
-        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        String alg = cert.getPublicKey().getAlgorithm(); // "EC" or "RSA"
+
+        KeyFactory keyFactory = KeyFactory.getInstance(alg);
         PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
 
         // 3. Pobierz challenge

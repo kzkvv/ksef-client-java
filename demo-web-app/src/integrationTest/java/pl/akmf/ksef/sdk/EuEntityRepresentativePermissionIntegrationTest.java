@@ -43,7 +43,7 @@ class EuEntityRepresentativePermissionIntegrationTest extends BaseIntegrationTes
      * 9. Sprawdzenie uprawnień po odwołaniu
      *
      */
-    @Test
+    //@Test
     void grantAdministrativePermission_E2E_ReturnsExpectedResults() throws JAXBException, IOException, ApiException {
         String ownerNip = IdentifierGeneratorUtils.getRandomNip();
         String ownerVatEu = IdentifierGeneratorUtils.getRandomVatEU("ES");

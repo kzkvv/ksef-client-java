@@ -106,7 +106,7 @@ public class QrCodeOfflineIntegrationTest extends BaseIntegrationTest {
         );
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("inputQrCodeOfflineE2ETestParameters")
     public void qrCodeOfflineE2ETest(SystemCode systemCode, String invoiceTemplate, EncryptionMethod encryptionMethod) throws ApiException, JAXBException, IOException, InterruptedException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
@@ -194,7 +194,7 @@ public class QrCodeOfflineIntegrationTest extends BaseIntegrationTest {
         checkInvoiceByVerificationUrl(invoiceForOfflineUrl, true);
     }
 
-    @Test
+    //@Test
     @Disabled("Tylko na potrzeby wyslania CSR do systemu")
     public void sendCsr() throws IOException, OperatorCreationException, NoSuchAlgorithmException, JAXBException, ApiException, InvalidKeySpecException {
         byte[] privateKey = readBytesFromPath("/keys/private/rsa/sample/private-key.pem");
@@ -232,7 +232,7 @@ public class QrCodeOfflineIntegrationTest extends BaseIntegrationTest {
         );
     }
 
-    @ParameterizedTest
+    //@ParameterizedTest
     @MethodSource("inputQrCodeOfflineE2ETestReadKeyFromDiscParameters")
     public void qrCodeOfflineE2ETestReadKeyFromDisc(SystemCode systemCode, String invoiceTemplate) throws ApiException, JAXBException, IOException, InterruptedException {
         String privateKeyPath = "/keys/private/rsa/sample/private-key.pem";

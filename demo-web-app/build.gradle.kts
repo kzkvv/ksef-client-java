@@ -46,6 +46,7 @@ val googleZxing = "3.5.3"
 
 dependencies {
     implementation(project(":ksef-client"))
+    implementation("org.springframework.boot:spring-boot")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:$jakartaVersion")
     implementation("org.springframework.retry:spring-retry")
@@ -64,7 +65,6 @@ dependencies {
     implementation("com.google.zxing:core:$googleZxing")
     implementation("com.google.zxing:javase:$googleZxing")
 
-    implementation("org.springframework.retry:spring-retry")
     implementation("org.springframework.boot:spring-boot-starter-web")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

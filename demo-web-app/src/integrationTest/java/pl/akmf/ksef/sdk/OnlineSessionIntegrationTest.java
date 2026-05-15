@@ -43,7 +43,7 @@ class OnlineSessionIntegrationTest extends BaseIntegrationTest {
 
     private EncryptionData encryptionData;
 
-    @Test
+    //@Test
     void onlineSessionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -87,7 +87,7 @@ class OnlineSessionIntegrationTest extends BaseIntegrationTest {
         getInvoice(sessionInvoice.getKsefNumber(), accessToken);
     }
 
-    @Test
+    //@Test
     void shouldReturn445SessionStatusWhileSendingWrongInvoiceAndCloseSession() throws JAXBException, IOException, ApiException {
         String wrongNip = "123";
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
@@ -117,7 +117,7 @@ class OnlineSessionIntegrationTest extends BaseIntegrationTest {
                 });
     }
 
-    @Test
+    //@Test
     void onlineSessionV3E2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

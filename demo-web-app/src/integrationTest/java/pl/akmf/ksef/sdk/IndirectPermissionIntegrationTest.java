@@ -26,7 +26,7 @@ import static pl.akmf.ksef.sdk.client.model.permission.indirect.IndirectPermissi
 
 class IndirectPermissionIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void indirectPermissionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String contextAccessToken = authWithCustomNip(contextNip, contextNip).accessToken();

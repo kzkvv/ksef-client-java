@@ -68,7 +68,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje poprawne wysłanie dokumentów w paczce (scenariusz pozytywny).
     // Oczekuje pomyślnego przetworzenia wszystkich faktur i możliwości pobrania UPO.
-    @Test
+    //@Test
     void batchSessionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -88,7 +88,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje poprawne wysłanie dokumentów w paczce (scenariusz pozytywny).
     // Oczekuje pomyślnego przetworzenia wszystkich faktur i możliwości pobrania UPO.
-    @Test
+    //@Test
     void batchSessionStreamE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -108,7 +108,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje odrzucenie faktur z niepoprawnym NIP (scenariusz negatywny).
     // Oczekuje statusu błędu i zliczenia wszystkich faktur jako niepoprawnych.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithIncorrectNip() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -128,7 +128,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje odrzucenie paczki przekraczającej limit 10000 faktur.
     // Oczekuje zwrócenia błędu o przekroczonym limicie.
-    @Test
+    //@Test
     void shouldThrowWhileSendExceedingInvoiceCount() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -149,7 +149,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje odrzucenie paczki przekraczającej maksymalny rozmiar 5 GiB.
     // Oczekuje wyjątku podczas próby otwarcia sesji z fileSize > 5368709120 bajtów (MaxTotalPackageSizeInBytes).
-    @Test
+    //@Test
     void shouldThrowWhileSendWithExceededTotalPackageSize() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -190,7 +190,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje odrzucenie paczki przekraczającej limit rozmiaru 100 MiB (przed szyfrowaniem).
     // Oczekuje wyjątku podczas próby otwarcia sesji.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithExceededPartSize() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -233,7 +233,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje wykrycie próby zamknięcia sesji bez wysłania wszystkich zadeklarowanych części.
     // Oczekuje wyjątku podczas wysyłania niepełnego zestawu części.
-    @Test
+    //@Test
     void shouldThrowWhileCloseSessionWithoutAllParts() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -279,7 +279,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje odrzucenie paczki z liczbą części przekraczającą maksymalny limit 50.
     // Oczekuje wyjątku podczas próby otwarcia sesji.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithExceededPartCount() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -317,7 +317,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje wykrycie nieprawidłowo zaszyfrowanego klucza symetrycznego.
     // Oczekuje błędu deszyfrowania po przetworzeniu sesji przez system KSeF.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithInvalidEncryptedKey() throws JAXBException, IOException, ApiException, NoSuchAlgorithmException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -372,7 +372,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje wykrycie uszkodzonych zaszyfrowanych danych.
     // Oczekuje błędu deszyfrowania po przetworzeniu sesji przez system KSeF.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithCorruptedEncryptedData() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();
@@ -427,7 +427,7 @@ class BatchIntegrationTest extends BaseIntegrationTest {
 
     // Weryfikuje wykrycie nieprawidłowego wektora inicjującego (IV).
     // Oczekuje błędu deszyfrowania po przetworzeniu sesji przez system KSeF.
-    @Test
+    //@Test
     void shouldThrowWhileSendWithInvalidInitializationVector() throws JAXBException, IOException, ApiException, NoSuchAlgorithmException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

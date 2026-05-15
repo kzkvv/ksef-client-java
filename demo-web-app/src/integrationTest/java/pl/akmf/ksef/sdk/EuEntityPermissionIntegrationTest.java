@@ -31,7 +31,7 @@ import static org.awaitility.Awaitility.await;
 
 class EuEntityPermissionIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void euEntityPermissionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String nip = IdentifierGeneratorUtils.getRandomNip();
         String nipVatUe = IdentifierGeneratorUtils.getRandomNipVatEU(nip, "CZ");

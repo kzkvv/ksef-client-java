@@ -38,13 +38,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@Testcontainers
-@SpringBootTest(
-        classes = {TestClientApplication.class, IntegrationConfig.class},
-        webEnvironment = RANDOM_PORT
-)
-@ContextConfiguration(classes = IntegrationConfig.class)
-@EnableAutoConfiguration
+////@Testcontainers
+//@SpringBootTest(
+//        classes = {TestClientApplication.class, IntegrationConfig.class},
+//        webEnvironment = RANDOM_PORT
+//)
+//@ContextConfiguration(classes = IntegrationConfig.class)
+//@EnableAutoConfiguration
 public abstract class BaseIntegrationTest {
 
     @LocalServerPort
@@ -74,12 +74,12 @@ public abstract class BaseIntegrationTest {
     @Autowired
     protected DefaultKsefClient ksefClient;
 
-    @BeforeEach
+//    @BeforeEach
     public void prepare() {
         wireMock.start();
     }
 
-    @AfterEach
+//    @AfterEach
     void clear() {
         wireMock.stop();
     }

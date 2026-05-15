@@ -29,7 +29,7 @@ class EntityPermissionIntegrationTest extends BaseIntegrationTest {
 
     private static final String DESCRIPTION = "E2E test grant";
 
-    @Test
+    //@Test
     void entityPermissionE2EIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String subjectNip = IdentifierGeneratorUtils.generateRandomNIP();

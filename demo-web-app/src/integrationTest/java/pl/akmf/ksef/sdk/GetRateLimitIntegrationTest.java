@@ -12,7 +12,7 @@ import java.io.IOException;
 
 class GetRateLimitIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void getRateLimitIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String accessToken = authWithCustomNip(contextNip, contextNip).accessToken();

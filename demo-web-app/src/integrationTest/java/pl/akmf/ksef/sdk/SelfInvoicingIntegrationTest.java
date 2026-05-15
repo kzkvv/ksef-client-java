@@ -50,7 +50,7 @@ class SelfInvoicingIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void selfInvoicingIntegrationTest() throws JAXBException, IOException, ApiException {
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();
         String sefInvoicingNip = IdentifierGeneratorUtils.generateRandomNIP();

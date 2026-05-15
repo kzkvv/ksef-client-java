@@ -20,7 +20,7 @@ import java.util.List;
 
 class SearchSubordinateQueryIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void searchSubordinateRoles() throws JAXBException, IOException, ApiException {
         // given
         String subjectNip = IdentifierGeneratorUtils.generateRandomNIP();

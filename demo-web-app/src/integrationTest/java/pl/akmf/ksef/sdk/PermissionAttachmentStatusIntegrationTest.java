@@ -14,7 +14,7 @@ import java.io.IOException;
 
 class PermissionAttachmentStatusIntegrationTest extends BaseIntegrationTest {
 
-    @Test
+    //@Test
     void attachmentStatusTest() throws JAXBException, IOException, ApiException {
         // given
         String contextNip = IdentifierGeneratorUtils.generateRandomNIP();

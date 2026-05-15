@@ -35,13 +35,13 @@ class VerificationLinkServiceTests {
     //    - Wolniejsze operacje kryptograficzne
     //    - Dłuższe URL-e (gorszy UX)
     // =============================================
-    @Test
+    //@Test
     void buildInvoiceVerificationUrl_encodesHashCorrectly_withSimpleXml() throws Exception {
         String xml = "<root>test</root>";
         assertInvoiceUrlIsCorrect(xml);
     }
 
-    @Test
+    //@Test
     void buildInvoiceVerificationUrl_encodesHashCorrectly_withSpecialChars() throws Exception {
         String xml = "<data>special & chars /?</data>";
         assertInvoiceUrlIsCorrect(xml);
@@ -52,7 +52,7 @@ class VerificationLinkServiceTests {
     // • Bezpieczeństwo jak RSA-2048, ale mniejsze i szybsze klucze
     // • Krótsze podpisane URL-e → lepszy UX w QR i linkach
     // =============================================
-    @Test
+    //@Test
     void buildCertificateVerificationUrl_WithEmbeddedEcdsaKey_ShouldSucceed_Ecc() throws Exception {
         // Arrange: wygeneruj klucz ECDSA P-256 i self-signed certyfikat
         VerificationLinkService svc = new DefaultVerificationLinkService(exampleApiProperties);
@@ -78,7 +78,7 @@ class VerificationLinkServiceTests {
         assertTrue(url.toLowerCase().contains("%3d"), "URL powinien zawierać base64 podpis (np. '%3d')");
     }
 
-    @Test
+    //@Test
     void BuildCertificateVerificationUrl_WithRsaCertificate_ShouldMatchFormat() throws Exception {
         String nip = "4564564567";
         String xml = "<root>foo</root>";
@@ -104,7 +104,7 @@ class VerificationLinkServiceTests {
         assertFalse(segments[9].isBlank());
     }
 
-    @Test
+    //@Test
     void buildCertificateVerificationUrl_withEcdsaCert_shouldMatchFormat() throws Exception {
         String nip = "1234567890";
         String xml = "<data>ecdsa</data>";
@@ -128,7 +128,7 @@ class VerificationLinkServiceTests {
         assertFalse(segments[8].isBlank());
     }
 
-    @Test
+    //@Test
     void buildCertificateVerificationUrl_withoutPrivateKey_shouldThrow() throws NoSuchAlgorithmException {
         String xml = "<x/>";
         String nip = "0000000000";

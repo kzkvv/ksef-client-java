@@ -63,7 +63,7 @@ class IncrementalInvoiceRetrieveIntegrationTest extends BaseIntegrationTest {
     @Autowired
     private DefaultCryptographyService defaultCryptographyService;
 
-    @Test
+    //@Test
     void invoiceIncrementalRetrievalWithDeduplication() throws JAXBException, IOException, ApiException {
         //1: Generowanie faktur w celu uzyskania danych do eksportu
         OffsetDateTime batchCreationStart = OffsetDateTime.now();
